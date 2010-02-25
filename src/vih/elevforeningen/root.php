@@ -39,4 +39,14 @@ class VIH_Elevforeningen_Root extends k_Dispatcher
             'styles' => $this->document->styles,
             ));
     }
+
+    function getCMS()
+    {
+        return $this->registry->get('cms:client');
+    }
+
+    function getPathToTemplate()
+    {
+        return dirname(__FILE__) . '/templates/';
+    }
 }
