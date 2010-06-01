@@ -45,8 +45,8 @@ class VIH_Elevforeningen_Root extends k_Dispatcher
         return $this->registry->get('cms:client');
     }
 
-    function getPathToTemplate()
+    function getPathToTemplate($template)
     {
-        return dirname(__FILE__) . '/templates/';
+        return dirname(__FILE__) . '/templates/' . $template;
     }
 }
