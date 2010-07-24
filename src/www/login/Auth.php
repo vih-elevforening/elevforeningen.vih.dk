@@ -9,13 +9,14 @@ require_once('Session/Session.php');
 
 class Auth {
 
-	var $session;
-	var $private_key;
-	var $contact;
-	var $contact_id;
-	var $contact_client;
+	public $session;
+	public $private_key;
+	public $contact;
+	public $contact_id;
+	public $contact_client;
 
-	function Auth() {
+	function __construct()
+	{
 		$arg = func_get_args();
 		$this->private_key = $arg[0];
 
@@ -26,18 +27,16 @@ class Auth {
 
 		if (!empty($arg[1]) AND is_string($arg[1])) {
 			$this->login($arg[1]);
-		}
-		elseif ($contact_id = $this->session->get('contact_id')) {
+		} elseif ($contact_id = $this->session->get('contact_id')) {
 			$this->contact = $this->contact_client->get($contact_id);
-		}
-		else {
+		} else {
 			header('Location: login.php');
 			exit;
 		}
-
 	}
 
-	function login($password) {
+	function login($password)
+	{
 		$this->session->set('contact_id', 0);
 		$this->contact = $this->contact_client->factory('code', $password);
 		if (empty($this->contact)) {
@@ -47,14 +46,16 @@ class Auth {
 		$this->auth($this->private_key);
 	}
 
-	function isLoggedIn() {
+	function isLoggedIn()
+	{
 		if ($this->session->get('contact_id')) {
 			return 1;
 		}
 		return 0;
 	}
 
-	function get() {
+	function get()
+	{
 		return $this->contact;
 	}
 
@@ -62,11 +63,9 @@ class Auth {
 	 * @todo Denne funktion giver en fejlmeddelelse
 	 *
 	 */
-	function logout() {
+	function logout()
+	{
 		$this->session->destroy();
 		$this->auth($this->private_key);
 	}
-
 }
-
-?>
