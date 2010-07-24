@@ -14,7 +14,7 @@ if (is_array($selected_items) AND count($selected_items) > 0) {
         }
     }
 }
-//
+
 $pic = '';
 
 if (isset($product['pic_id']) AND $product['pic_id'] > 0) {
@@ -34,4 +34,4 @@ $tpl->set('content_main', '
         <input type="submit" value="Bestil" />
     </form>
 ');
-echo $tpl->fetch('main-tpl.php');
+echo $tpl->fetch('main.tpl.php');

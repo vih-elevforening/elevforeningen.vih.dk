@@ -39,4 +39,4 @@ $tpl->set('content_main', '
     <p><a href="index.php">Luk uden at gemme</a></p>
     ' . $form->toHTML());
 
-echo $tpl->fetch('main-tpl.php');
+echo $tpl->fetch('main.tpl.php');

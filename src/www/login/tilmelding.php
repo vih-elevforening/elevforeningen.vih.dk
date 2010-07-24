@@ -63,5 +63,5 @@ $tilmelding_tpl->set('selected_items', $basket['items']);
 
 $tpl = new Template(PATH_TEMPLATE_KUNDELOGIN);
 $tpl->set('title', 'Tilmelding');
-$tpl->set('content_main', $tilmelding_tpl->fetch('elevforeningen/tilmelding-tpl.php'));
-echo $tpl->fetch('main-tpl.php');
+$tpl->set('content_main', $tilmelding_tpl->fetch('elevforeningen/tilmelding.tpl.php'));
+echo $tpl->fetch('main.tpl.php');

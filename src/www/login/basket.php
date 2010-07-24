@@ -56,4 +56,4 @@ $tpl->set('keywords', '');
 $tpl->set('content_main', $basket->fetch('elevforeningen/basket-tpl.php') . '
     ' . $form_view);
 
-echo $tpl->fetch('main-tpl.php');
+echo $tpl->fetch('main.tpl.php');

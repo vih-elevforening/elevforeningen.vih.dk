@@ -151,4 +151,4 @@ $tpl->set('content_main', '
     </div>
 ');
 
-echo $tpl->fetch('main-tpl.php');
+echo $tpl->fetch('main.tpl.php');

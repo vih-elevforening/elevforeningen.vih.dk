@@ -35,4 +35,4 @@ $tpl->set('content_main', '
     </dl>
 ');
 
-echo $tpl->fetch('main-tpl.php');
+echo $tpl->fetch('main.tpl.php');

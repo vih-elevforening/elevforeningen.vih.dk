@@ -41,4 +41,4 @@ $tpl->set('content_main', '
     <p>Du kan logge ind ved at indtaste din kode.</p>
     ' . $form->toHTML());
 
-echo $tpl->fetch('main-tpl.php');
+echo $tpl->fetch('main.tpl.php');

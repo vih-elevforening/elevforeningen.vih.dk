@@ -29,9 +29,9 @@ $products_tpl = new Template(PATH_TEMPLATE);
 $products_tpl->set('products', $products);
 $products_tpl->set('selected_items', $client->getBasket());
 
-$string = $products_tpl->fetch('elevforeningen/products-tpl.php');
+$string = $products_tpl->fetch('elevforeningen/products.tpl.php');
 
 $tpl = new Template(PATH_TEMPLATE_KUNDELOGIN);
 $tpl->set('title', 'Tilmelding');
 $tpl->set('content_main', $string);
-echo $tpl->fetch('main-tpl.php');
+echo $tpl->fetch('main.tpl.php');

@@ -52,14 +52,14 @@ if (count($invoices) > 0) {
     $debtor_tpl->set('caption', 'Accepterede tilmeldinger');
     $debtor_tpl->set('debtors', utf8_decoding($invoices));
     $debtor_tpl->set('credentials', $credentials);
-    $string .= $debtor_tpl->fetch('elevforeningen/debtors-tpl.php');
+    $string .= $debtor_tpl->fetch('elevforeningen/debtors.tpl.php');
 }
 if (count($orders) > 0) {
     $debtor_tpl = new Template(PATH_TEMPLATE);
     $debtor_tpl->set('caption', 'Afventende tilmeldinger');
     $debtor_tpl->set('debtors', utf8_decoding($orders));
     $debtor_tpl->set('credentials', $credentials);
-    $string .= $debtor_tpl->fetch('elevforeningen/debtors-tpl.php');
+    $string .= $debtor_tpl->fetch('elevforeningen/debtors.tpl.php');
 }
 
 if (is_jubilar($auth)) {
@@ -71,7 +71,7 @@ if (is_array($debtors) AND count($debtors) > 0) {
     $debtor_tpl->set('caption', 'Bestillinger og fakturaer');
     $debtor_tpl->set('debtors', $debtors);
 
-    $string .= $debtor_tpl->fetch('elevforeningen/debtors-tpl.php');
+    $string .= $debtor_tpl->fetch('elevforeningen/debtors.tpl.php');
 }
 
 
@@ -81,10 +81,10 @@ $contact_tpl->set('contact', utf8_decoding($contact_array));
 
 $tpl->set('content_main', '
     <h1>Velkommen</h1>
-    ' . $contact_tpl->fetch('elevforeningen/medlem-tpl.php') . '
+    ' . $contact_tpl->fetch('elevforeningen/medlem.tpl.php') . '
     <h2>'.$headline.'</h2>
     '.$string.'
     ');
 
-echo $tpl->fetch('main-tpl.php');
+echo $tpl->fetch('main.tpl.php');
 
