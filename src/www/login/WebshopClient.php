@@ -1,5 +1,4 @@
 <?php
-
 /**
  * WebshopClient
  *
@@ -12,8 +11,7 @@
  * Include the Incution XML RPC library
  * http://scripts.incutio.com/xmlrpc/
  */
-
- require_once('IXR/IXR.php');
+require_once('IXR/IXR.php');
 
 class WebshopClient {
 	/**
@@ -29,7 +27,6 @@ class WebshopClient {
 	 * @var array
 	 */
 	var $credentials;
-
 
 	/**
 	 * Webshopclient constructor
@@ -49,7 +46,7 @@ class WebshopClient {
 
 		// credentials
 		$this->credentials = array(
-			"private_key" => 'L9FtAdfAu8QwLSChGZehzeZwiAhXNwsqwWIMZF4avCw6jY6HN2G',
+			"private_key" => INTRAFACE_PRIVATE_KEY,
 			"session_id" => md5(session_id())
 		);
 

@@ -17,7 +17,7 @@ require_once 'IntrafacePublic/Shop/XMLRPC/Client.php';
 session_start();
 
 $credentials = array(
-    'private_key' => 'L9FtAdfAu8QwLSChGZehzeZwiAhXNwsqwWIMZF4avCw6jY6HN2G',
+    'private_key' => INTRAFACE_PRIVATE_KEY,
     'session_id' => md5(session_id()));
 
 function is_jubilar($auth) {
