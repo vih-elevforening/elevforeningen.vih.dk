@@ -13,8 +13,8 @@ if (!empty($_GET['order_id']) AND is_numeric($_GET['order_id'])) {
 
 if ($_SESSION['amount'] > 0) {
     $kr = number_format($_SESSION['amount'], 0, ',', '.') . ' kroner';
-    $onlinebetaling = '<dt>Betaling med Dankort</dt>
-        <dd>Du kan også betale med <span class="dankort">Dankort</span>. <a href="https://vih.dk/elevforeningen/login/onlinebetaling.php">Betal online &rarr;</a>.</dd>
+    $onlinebetaling = '<dt>Betal med Dankort</dt>
+        <dd>Du betaler med <span class="dankort">Dankort</span>. <a href="https://vih.dk/elevforeningen/login/onlinebetaling.php">Betal online &rarr;</a>.</dd>
 ';
 } else {
     $kr = 'pengene';
@@ -29,10 +29,12 @@ $tpl->set('content_main', '
     <h1>Betaling</h1>
     <dl>
         '.$onlinebetaling.'
-        <dt>Betaling med kontooverførsel</dt>
-
-        <dd>Du kan betale ved at overføre '.$kr.' til vores konto i BG Bank.<br />Registreringsnummer: 1551<br />Kontonummer: 8041970<br /><strong>HUSK</strong>: Skriv medlemsnummer ('.$contact['number'].') og ordrenummer på overførslen</dd>
     </dl>
 ');
+
+/*
+<dt>Betaling med kontooverførsel</dt>
+<dd>Du kan betale ved at overføre '.$kr.' til vores konto i BG Bank.<br />Registreringsnummer: 1551<br />Kontonummer: 8041970<br /><strong>HUSK</strong>: Skriv medlemsnummer ('.$contact['number'].') og ordrenummer på overførslen</dd>
+*/
 
 echo $tpl->fetch('main.tpl.php');

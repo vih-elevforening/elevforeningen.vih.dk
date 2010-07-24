@@ -41,7 +41,7 @@ if (!empty($contact_array['id']) AND $contact_array['id'] > 0) {
 $tpl = new Template(PATH_TEMPLATE_KUNDELOGIN);
 $tpl->set('title', 'Kontakt');
 
-$headline = 'Elevstævne';
+$headline = 'Gensynsweekend';
 
 $string = '
     <p><a href="tilmelding.php">Tilmelding &rarr;</a></p>
