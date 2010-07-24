@@ -66,13 +66,6 @@ if (is_jubilar($auth)) {
     $headline .= ' og jubilæum';
 }
 
-
-/*
-$string = '
-    <p><a href="bestilling.php">Bestilling af ï¿½rsskrift &rarr;</a></p>
-';
-*/
-
 if (is_array($debtors) AND count($debtors) > 0) {
     $debtor_tpl = new Template(PATH_TEMPLATE);
     $debtor_tpl->set('caption', 'Bestillinger og fakturaer');
@@ -94,9 +87,4 @@ $tpl->set('content_main', '
     ');
 
 echo $tpl->fetch('main-tpl.php');
-/*
 
-    <h2>Tilmelding til '.$extra_headline.'elevmï¿½de 2006</h2>
-    <p>Husk at skrive din kvittering for tilmeldingen ud og tag den med pï¿½ hï¿½jskolen. Den er fï¿½rst rigtig gï¿½ldende, nï¿½r vi har registreret din betaling.</p>
-*/
-?>

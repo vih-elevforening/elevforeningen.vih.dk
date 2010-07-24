@@ -35,6 +35,3 @@ $tpl->set('content_main', '
     </form>
 ');
 echo $tpl->fetch('main-tpl.php');
-
-
-?>

@@ -1,12 +1,11 @@
 <?php
 /**
- * Der kan ikke vï¿½re spï¿½rring pï¿½ denne fil, for det kan IE ikke hï¿½ndtere
+ * Der kan ikke være spærring på denne fil, for det kan IE ikke håndtere
  * over en sikker server.
- *
+ * @todo This could probably be changed now
  */
-
 if (empty($_GET['id']) OR !is_numeric($_GET['id'])) {
-    trigger_error('Du kan kun Ã¥bne denne side, nÃ¥r der er et id', E_USER_ERROR);
+    trigger_error('Du kan kun Ã¥bne denne side, når der er et id', E_USER_ERROR);
     exit;
 }
 
@@ -17,11 +16,8 @@ $pdf = $debtor_client->pdf($_GET['id']);
 //$pdf = $debtor_client->get($_GET['id']);
 //$pdf = $debtor_client->getList('order', $contact_array['id']);
 
-
 header('Content-type: application/pdf');
 header("Content-Length: ".strlen(ltrim($pdf)));
-header("Content-Disposition: inline; filename=file.php");
+header("Content-Disposition: inline; filename=kvittering.pdf");
 
 echo ltrim($pdf);
-
-?>

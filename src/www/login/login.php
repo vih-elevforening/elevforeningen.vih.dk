@@ -1,6 +1,4 @@
 <?php
-set_include_path('/home/vih/pear/php/' . PATH_SEPARATOR . get_include_path());
-
 require_once 'include_elevforeningen.php';
 require_once 'HTML/QuickForm.php';
 //require_once 'Template/Template.php';
@@ -36,8 +34,6 @@ if ($form->validate()) {
     }
 }
 
-
-
 $tpl = new Template(PATH_TEMPLATE_KUNDELOGIN);
 $tpl->set('title', 'Login');
 $tpl->set('content_main', '
@@ -46,4 +42,3 @@ $tpl->set('content_main', '
     ' . $form->toHTML());
 
 echo $tpl->fetch('main-tpl.php');
-?>

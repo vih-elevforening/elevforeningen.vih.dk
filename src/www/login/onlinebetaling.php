@@ -6,10 +6,8 @@
  *
  * @see /betaling/Betaling.php
  *
- * Skal knyttes til betaling for et enkelt elevstï¿½vne.
+ * Skal knyttes til betaling for et enkelt elevstævne.
  */
-
-
 require 'include_elevforeningen_login.php';
 require_once 'DB/Sql.php';
 require_once 'VIH/Model/Betaling.php';
@@ -47,19 +45,16 @@ $form->addRule('mm', 'Du skal udfylde Mdr.', 'numeric');
 $form->addRule('yy', 'Du skal udfylde År ', 'required');
 $form->addRule('yy', 'Du skal udfylde År', 'numeric');
 
-
-
 $form->applyFilter('trim', '__ALL__');
 $form->applyFilter('addslashes', '__ALL__');
 $form->applyFilter('strip_tags', '__ALL__');
 
 if ($form->validate()) {
 
-    # fï¿½rst skal vi oprette en betaling - som kan fungere som id hos qp
-    # betalingen skal kobles til den aktuelle tilmelding
-
-    # nï¿½r vi sï¿½ har haft den omkring pbs skal betalingen opdateres med status for betalingen
-    # status sï¿½ttes til 000, hvis den er godkendt hos pbs.
+    // først skal vi oprette en betaling - som kan fungere som id hos qp
+    // betalingen skal kobles til den aktuelle tilmelding
+    // når vi så har haft den omkring pbs skal betalingen opdateres med status for betalingen
+    // status sættes til 000, hvis den er godkendt hos pbs.
 
     $eval = false;
 
@@ -67,7 +62,7 @@ if ($form->validate()) {
 
     $betaling_amount_quickpay =  $betaling_amount * 100;
     $betaling_id = $betaling->save(array('type' => 'quickpay', 'amount' => $betaling_amount));
-    if($betaling_id == 0) {
+    if ($betaling_id == 0) {
         trigger_error("Kunne ikke oprette betaling", E_USER_ERROR);
     }
 
@@ -76,26 +71,23 @@ if ($form->validate()) {
     $onlinebetaling->addCustomVar('Elevforeningsmedlem', $contact['number']);
     $onlinebetaling->addCustomVar('Kontaktid', $contact['id']);
 
-
     $eval = $onlinebetaling->authorize(
         $form->exportValue('cardnumber'), // kortnummer
         $form->exportValue('yy') . $form->exportValue('mm'), //YYMM
         $form->exportValue('cvd'), // sikkerhedsnummer
         $betaling_id, // ordrenummer
-        $betaling_amount_quickpay	// belï¿½b
+        $betaling_amount_quickpay	// beløb
     );
 
     if ($eval) {
         if ($eval['qpstat'] === '000') {
             // The authorization was completed
-
             /*
             echo 'Authorization: ' . $qpstatText["" . $eval['qpstat'] . ""] . '<br />';
             echo "<pre>";
             var_dump($eval);
             echo "</pre>";
             */
-
             $betaling->setTransactionnumber($eval['transaction']);
             $betaling->setStatus('completed');
 
@@ -109,7 +101,7 @@ if ($form->validate()) {
                 'belong_to_id' => $order_id,
                 'transaction_number' => $eval['transaction'],
                 'transaction_status' => $eval['qpstat'],
-		'pbs_status' => $eval['pbsstat'],
+		        'pbs_status' => $eval['pbsstat'],
                 'amount' => $betaling_amount
             );
 
@@ -119,20 +111,18 @@ if ($form->validate()) {
             header("Location: index.php");
             exit;
 
-        }
-        else {
+        } else {
             // An error occured with the authorize
 
             $error = '<p class="warning">Der opstod en fejl under transaktionen. '.$onlinebetaling->statuskoder[$eval['qpstat']].'. Du kan prøve igen.</p>';
-            /* 
+            /*
             echo 'Authorization: ' . $qpstatText["" . $eval['qpstat'] . ""] . '<br />';
             echo "<pre>";
             var_dump($eval);
             echo "</pre>";
             */
         }
-    }
-    else {
+    } else {
         trigger_error('Kommunikationsfejl med PBS eller QuickPay', E_USER_ERROR);
     }
 }
@@ -162,6 +152,3 @@ $tpl->set('content_main', '
 ');
 
 echo $tpl->fetch('main-tpl.php');
-
-
-?>

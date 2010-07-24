@@ -28,8 +28,7 @@ if ($form->validate()) {
     if ($auth->saveContact($form->exportValues())) {
         header('Location: index.php');
         exit;
-    }
-    else {
+    } else {
         trigger_error('Kunne ikke gemme', E_USER_ERROR);
     }
 }
@@ -41,5 +40,3 @@ $tpl->set('content_main', '
     ' . $form->toHTML());
 
 echo $tpl->fetch('main-tpl.php');
-
-?>

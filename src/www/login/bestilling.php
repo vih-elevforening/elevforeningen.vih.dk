@@ -1,7 +1,4 @@
 <?php
-/**
- * Used when only one type of product is sold for instance aarsskrift.
- */
 require 'include_elevforeningen_login.php';
 
 $contact = $auth->getContact($_SESSION['contact_id']);
@@ -9,12 +6,11 @@ $contact = $auth->getContact($_SESSION['contact_id']);
 $error = array();
 
 if (!empty($_POST)) {
-    if(is_array($_POST['order'])) {
-        foreach($_POST['order'] AS $key => $antal) {
+    if (is_array($_POST['order'])) {
+        foreach ($_POST['order'] AS $key => $antal) {
             if (isset($antal) AND is_numeric((int)$antal)) {
                 $client->changeBasket($key, (int)$antal);
-            }
-            else {
+            } else {
                 $error[] = 'Du skal skrive et tal, hvis du vil bestille noget.';
             }
         }
@@ -39,5 +35,3 @@ $tpl = new Template(PATH_TEMPLATE_KUNDELOGIN);
 $tpl->set('title', 'Tilmelding');
 $tpl->set('content_main', $string);
 echo $tpl->fetch('main-tpl.php');
-
-?>

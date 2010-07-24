@@ -20,4 +20,3 @@ $tpl->set('content_main', '
 ');
 
 echo $tpl->fetch('main-tpl.php');
-?>

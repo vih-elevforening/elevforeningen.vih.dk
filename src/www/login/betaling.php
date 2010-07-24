@@ -4,7 +4,6 @@ require 'include_elevforeningen_login.php';
 $contact = $auth->getContact($_SESSION['contact_id']);
 
 if (!empty($_GET['order_id']) AND is_numeric($_GET['order_id'])) {
-
     $debtor_client = new IntrafacePublic_Debtor_XMLRPC_Client($credentials, false);
     $debtor = $debtor_client->getDebtor($_GET['order_id']);
 
@@ -12,18 +11,15 @@ if (!empty($_GET['order_id']) AND is_numeric($_GET['order_id'])) {
     $_SESSION['amount'] = $debtor['total'];
 }
 
-
 if ($_SESSION['amount'] > 0) {
     $kr = number_format($_SESSION['amount'], 0, ',', '.') . ' kroner';
     $onlinebetaling = '<dt>Betaling med Dankort</dt>
         <dd>Du kan også betale med <span class="dankort">Dankort</span>. <a href="https://vih.dk/elevforeningen/login/onlinebetaling.php">Betal online &rarr;</a>.</dd>
 ';
-}
-else {
+} else {
     $kr = 'pengene';
     $onlinebetaling = '';
 }
-
 
 $tpl = new Template(PATH_TEMPLATE_KUNDELOGIN);
 $tpl->set('title', 'Betaling');
@@ -40,4 +36,3 @@ $tpl->set('content_main', '
 ');
 
 echo $tpl->fetch('main-tpl.php');
-?>

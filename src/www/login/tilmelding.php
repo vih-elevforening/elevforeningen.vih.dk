@@ -8,27 +8,25 @@ $client = new IntrafacePublic_Shop_XMLRPC_Client($credentials, false);
 $error = array();
 
 if (!empty($_POST)) {
-    if(!empty($_POST['elevmoede'])) {
-        foreach($_POST['elevmoede'] AS $key => $antal) {
+    if (!empty($_POST['elevmoede'])) {
+        foreach ($_POST['elevmoede'] AS $key => $antal) {
             if (isset($antal) AND is_numeric($antal)) {
                 $client->changeBasket($key, (int)$antal);
-            }
-            elseif (!empty($antal) AND !is_numeric($antal)) {
+            } elseif (!empty($antal) AND !is_numeric($antal)) {
                 $error[] = 'Du skal skrive et tal, når du tilmelder dig elevmødet.';
             }
         }
     }
-    if(!empty($_POST['jubilaeum']) AND is_jubilar($auth)) {
-        foreach($_POST['jubilaeum'] as $key => $antal) {
+    if (!empty($_POST['jubilaeum']) AND is_jubilar($auth)) {
+        foreach ($_POST['jubilaeum'] as $key => $antal) {
             if (isset($antal) AND is_numeric($antal)) {
                 $client->changeBasket($key, (int)$antal);
-            }
-            elseif (!empty($antal) AND !is_numeric($antal)) {
+            } elseif (!empty($antal) AND !is_numeric($antal)) {
                 $error[] = 'Du skal skrive et tal, når du tilmelder dig jubilæet';
             }
         }
     }
-    if(!empty($_POST['stjernetraef'])) {
+    if (!empty($_POST['stjernetraef'])) {
         // sørger for at slette alle tilmeldinger med stjernetræf
         $stjernetraef = $client->getProducts(array('keywords' => array(122)));
         foreach ($stjernetraef['products'] AS $product) { // 122 er stjernetræf
@@ -67,6 +65,3 @@ $tpl = new Template(PATH_TEMPLATE_KUNDELOGIN);
 $tpl->set('title', 'Tilmelding');
 $tpl->set('content_main', $tilmelding_tpl->fetch('elevforeningen/tilmelding-tpl.php'));
 echo $tpl->fetch('main-tpl.php');
-
-
-?>
