@@ -1,6 +1,4 @@
 <?php
-set_include_path('/home/vih/pear/php/' . PATH_SEPARATOR . get_include_path());
-
 require_once dirname(__FILE__) . '/include_elevforeningen.php';
 
 /* TEMP HACK SENDING TO LOGIN */
