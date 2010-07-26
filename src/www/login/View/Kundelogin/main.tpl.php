@@ -159,7 +159,7 @@
             <?php endif; ?>
 			
 			<div id="content">
-				<?php echo $content; ?>
+				<?php echo $content_main; ?>
 			</div>
 
 			<p style="clear: both;" />&nbsp;</p>
