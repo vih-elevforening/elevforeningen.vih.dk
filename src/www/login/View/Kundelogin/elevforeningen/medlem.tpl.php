@@ -39,4 +39,4 @@
         </tr>
     </table>
 
-    <p><a href="<?php e(url('edit')); ?>"><?php e(__('Edit')); ?></a></p>
+    <p><a href="<?php e(url('edit.php')); ?>"><?php e(__('Edit')); ?></a></p>
