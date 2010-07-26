@@ -16,10 +16,8 @@ if (count($items) > 0) {
     $form_view = '
     <h2>Betaling</h2>
     <dl>
-        <dt>Betaling med Dankort</dt>
-        <dd>Du kan også betale med <span class="dankort">Dankort</span>. Men først skal du have bestilt noget.</dd>
-        <dt>Betaling med kontooverførsel</dt>
-        <dd>Du kan betale ved at overføre penge til vores konto i BG Bank.<br />Registreringsnummer: 1551<br />Kontonummer: 8041970</dd>
+        <dt>Betal med Dankort</dt>
+        <dd>Du betaler med <span class="dankort">Dankort</span>. Men først skal du have bestilt noget.</dd>
     </dl>
     ' . $form->toHTML();
 } else {
