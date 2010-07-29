@@ -27,7 +27,7 @@ if (count($items) > 0) {
 if ($form->validate()) {
     $order = array(
         'contact_id' => $contact['id'],
-        'description' => 'Tilmelding 2009'
+        'description' => 'Tilmelding ' . date('Y')
     );
 
     //$amount = $client->getBasketPrice();
