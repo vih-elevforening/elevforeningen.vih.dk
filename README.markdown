@@ -1,7 +1,7 @@
 elevforeningen.vih.dk
 ==
 
-PHP source code for [Vejle Idrætshøjskole's elevforening](http://elevforeningen.vih.dk)
+PHP source code for [Vejle IdrÃ¦tshÃ¸jskole's elevforening](http://elevforeningen.vih.dk)
 
 Installation
 --
